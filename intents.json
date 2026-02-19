@@ -1,0 +1,215 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hi", "hello", "hey", "good morning", "good evening", "hello bot",
+        "hey assistant", "hi there", "how are you", "greetings"
+      ],
+      "responses": [
+        "Hello! How can I help you with information about VGEC Ahmedabad?",
+        "Hi there! Ask me anything about Vishwakarma Government Engineering College."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye", "see you", "goodbye", "thank you", "thanks", "talk to you later",
+        "see ya", "good night", "catch you later"
+      ],
+      "responses": [
+        "Goodbye! Feel free to ask more about VGEC later.",
+        "Thanks for chatting! Have a great day ahead."
+      ]
+    },
+    {
+      "tag": "college_overview",
+      "patterns": [
+        "tell me about Vishwakarma Government Engineering College",
+        "what is VGEC", "about vgec ahmedabad", "college description",
+        "VGEC overview", "what is this college known for",
+        "information about vgecg.ac.in"
+      ],
+      "responses": [
+        "Vishwakarma Government Engineering College is a government engineering institute in Ahmedabad, Gujarat, offering UG and PG programs with strong focus on innovation and research. :contentReference[oaicite:1]{index=1}",
+        "VGEC Ahmedabad is an AICTE approved engineering college affiliated with GTU, known for its academic excellence and campus facilities. :contentReference[oaicite:2]{index=2}"
+      ]
+    },
+    {
+      "tag": "admission_process",
+      "patterns": [
+        "how to apply for admission", "admission process VGEC",
+        "steps to join VGEC", "apply for vgec courses", "what is the admission procedure",
+        "how can I enroll at VGEC"
+      ],
+      "responses": [
+        "Admission to UG and PG programs at VGEC is done through the Gujarat ACPC counselling based on GUJCET/JEE Main for BE and GATE/PGCET for ME. :contentReference[oaicite:3]{index=3}",
+        "You can apply online or via centralised counselling for VGEC admissions depending on the course and eligibility criteria. :contentReference[oaicite:4]{index=4}"
+      ]
+    },
+    {
+      "tag": "eligibility",
+      "patterns": [
+        "eligibility criteria for VGEC", "who can join VGEC",
+        "minimum marks for admission", "qualifications needed", "eligibility requirements"
+      ],
+      "responses": [
+        "Eligibility for UG is passing 10+2 (Science) with required scores in GUJCET/JEE; for PG it is graduation with valid GATE/PGCET score. :contentReference[oaicite:5]{index=5}",
+        "To be eligible, students must satisfy course specific criteria like JEE Main/GUJCET for BE and GATE/PGCET for MTech programs. :contentReference[oaicite:6]{index=6}"
+      ]
+    },
+    {
+      "tag": "courses_offered",
+      "patterns": [
+        "what courses are available", "list programs", "courses at VGEC",
+        "UG and PG courses offered", "engineering departments"
+      ],
+      "responses": [
+        "VGEC offers a variety of UG (B.Tech/BE) and PG (M.Tech/ME) engineering programs in fields like Computer, Electronics, Mechanical, Civil, IT and more. :contentReference[oaicite:7]{index=7}",
+        "You can study B.Tech and M.Tech courses at VGEC across multiple specialisations including IT, Chemical, Electrical and others. :contentReference[oaicite:8]{index=8}"
+      ]
+    },
+    {
+      "tag": "fee_structure",
+      "patterns": [
+        "what is the fee structure", "tuition fees at vgec",
+        "how much fees", "total fees for courses", "course cost"
+      ],
+      "responses": [
+        "Fees at VGEC range from approximately ₹6,000 for UG programs to ₹15,000 for PG programs per total course duration. :contentReference[oaicite:9]{index=9}",
+        "Undergraduate tuition is around ₹6,000 total while postgraduate fees can be up to ₹15,000 depending on the program. :contentReference[oaicite:10]{index=10}"
+      ]
+    },
+    {
+      "tag": "hostel_info",
+      "patterns": [
+        "is hostel available", "VGEC hostel details", "hostel fees",
+        "accommodation at VGEC", "where do students stay"
+      ],
+      "responses": [
+        "VGEC provides hostel accommodation with necessary facilities for students; hostel admission is merit based. :contentReference[oaicite:11]{index=11}",
+        "Yes, on-campus hostel facilities are available with separate allotment processes and fees. :contentReference[oaicite:12]{index=12}"
+      ]
+    },
+    {
+      "tag": "placement_info",
+      "patterns": [
+        "placement at VGEC", "companies hiring from VGEC",
+        "placement record", "jobs after VGEC", "highest package"
+      ],
+      "responses": [
+        "VGEC has a strong placement network with recruiters like IBM, Infosys and more; average packages vary by branch. :contentReference[oaicite:13]{index=13}",
+        "Students from VGEC get placed in good companies with packages that vary across departments. :contentReference[oaicite:14]{index=14}"
+      ]
+    },
+    {
+      "tag": "program_duration",
+      "patterns": [
+        "duration of courses", "how long is BTech", "length of MTech",
+        "course duration UG and PG"
+      ],
+      "responses": [
+        "Undergraduate (B.Tech) at VGEC is typically 4 years while PG (M.Tech) is usually 2 years. :contentReference[oaicite:15]{index=15}",
+        "The BE/B.Tech program lasts four years and most M.Tech programs last two years. :contentReference[oaicite:16]{index=16}"
+      ]
+    },
+    {
+      "tag": "contact_info",
+      "patterns": [
+        "contact number", "how to contact VGEC",
+        "email address", "college phone", "contact details"
+      ],
+      "responses": [
+        "You can contact VGEC at +91 79 23293866 or email office@vgecg.ac.in for queries. :contentReference[oaicite:17]{index=17}",
+        "Admission and academic queries can be directed to sts@vgecg.ac.in or est@vgecg.ac.in. :contentReference[oaicite:18]{index=18}"
+      ]
+    },
+    {
+      "tag": "location",
+      "patterns": [
+        "where is the college", "VGEC address",
+        "location of vgec", "college city"
+      ],
+      "responses": [
+        "Vishwakarma Government Engineering College is at Sabarmati-Koba highway, Chandkheda, Ahmedabad, Gujarat, India. :contentReference[oaicite:19]{index=19}",
+        "The campus is located in Ahmedabad, Gujarat near the Sabarmati-Koba Highway. :contentReference[oaicite:20]{index=20}"
+      ]
+    },
+    {
+      "tag": "admission_dates",
+      "patterns": [
+        "when does admission start", "admission deadline",
+        "admission timeline", "application dates"
+      ],
+      "responses": [
+        "Admission data and important dates for ACPC counselling and exams are available on VGEC’s official portal. :contentReference[oaicite:21]{index=21}",
+        "Check official updates for latest admission timelines as they vary each academic cycle. :contentReference[oaicite:22]{index=22}"
+      ]
+    },
+    {
+      "tag": "scholarship_info",
+      "patterns": [
+        "scholarship options", "financial aid", "any scholarships",
+        "fee concessions", "merit scholarship"
+      ],
+      "responses": [
+        "VGEC supports various scholarship and financial aid programs depending on eligibility. Check college guidelines. :contentReference[oaicite:23]{index=23}",
+        "Scholarships and fee concessions may be available based on merit or category; refer to official notifications. :contentReference[oaicite:24]{index=24}"
+      ]
+    },
+    {
+      "tag": "faculty_info",
+      "patterns": [
+        "faculty details", "teachers at VGEC", "who teaches here",
+        "professors list"
+      ],
+      "responses": [
+        "VGEC has experienced faculty across departments; detailed directory is available on the official site. :contentReference[oaicite:25]{index=25}",
+        "Faculty information can be found in VGEC’s staff directory on their website. :contentReference[oaicite:26]{index=26}"
+      ]
+    },
+    {
+      "tag": "library_facilities",
+      "patterns": [
+        "library info", "study facilities", "library timings",
+        "books and journals"
+      ],
+      "responses": [
+        "VGEC provides library facilities with a wide collection of books, journals, and digital resources. :contentReference[oaicite:27]{index=27}",
+        "The library supports academic learning with extensive resources for students and researchers. :contentReference[oaicite:28]{index=28}"
+      ]
+    },
+    {
+      "tag": "lab_facilities",
+      "patterns": [
+        "laboratories", "lab facilities", "science labs",
+        "computer lab info"
+      ],
+      "responses": [
+        "VGEC offers well-equipped laboratories for practical sessions across engineering streams. :contentReference[oaicite:29]{index=29}",
+        "Labs with modern equipment are available for students in multiple departments. :contentReference[oaicite:30]{index=30}"
+      ]
+    },
+    {
+      "tag": "placements_stats",
+      "patterns": [
+        "placement statistics", "placement packages",
+        "highest salary", "average salary"
+      ],
+      "responses": [
+        "Placement details and recruiter information can be found on the VGEC official placement page. :contentReference[oaicite:31]{index=31}",
+        "Statistics for placements are updated each year; check the placement portal for latest info. :contentReference[oaicite:32]{index=32}"
+      ]
+    },
+    {
+      "tag": "fallback",
+      "patterns": [
+        "random question", "something else", "any topic", "I don't know what to ask"
+      ],
+      "responses": [
+        "Sorry, I can only help with questions related to Vishwakarma Government Engineering College.",
+        "I’m here to answer VGEC questions — try asking about admissions, courses, or fees!"
+      ]
+    }
+  ]
+}
