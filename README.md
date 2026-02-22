@@ -1,56 +1,132 @@
 # 🎓 VGEC Intelligent AI Assistant
 
-An AI-powered domain-specific NLP chatbot developed for **Vishwakarma Government Engineering College (VGEC), Ahmedabad**.  
-The system provides automated conversational support for admissions, courses, fees, placements, and other college-related queries.
+An AI-powered domain-specific NLP chatbot developed for **Vishwakarma Government Engineering College (VGEC), Ahmedabad, Gujarat, India**.
+
+This project implements a full-stack conversational AI system using **FastAPI (Python)** for backend NLP processing and **Angular** for a professional frontend chat interface.
 
 ---
 
 ## 🚀 Project Overview
 
-This project implements a **Natural Language Processing (NLP) based chatbot** capable of:
+VGEC Intelligent AI Assistant is designed to provide automated responses to student queries related to:
 
-- Understanding user queries using text preprocessing
-- Performing intent classification using Machine Learning
-- Providing domain-restricted responses
-- Serving responses through a FastAPI backend
-
-The chatbot is specifically designed to answer queries related to:
 - Admissions
 - Eligibility
-- Courses offered
-- Fee structure
-- Hostel & facilities
+- Courses Offered
+- Fee Structure
 - Placements
-- Contact & location details
+- Hostel & Facilities
+- Contact & Location
+- Scholarships
+- Faculty Information
+
+The chatbot uses Machine Learning for **intent classification** and ensures responses are strictly restricted to the VGEC domain.
 
 ---
 
-## 🧠 Technical Architecture
+## 🧠 System Architecture
 
-User Input  
-⬇  
-FastAPI Backend  
-⬇  
-NLP Preprocessing  
-⬇  
-TF-IDF Vectorization (n-grams)  
-⬇  
-Logistic Regression Classifier  
-⬇  
-Intent Prediction  
-⬇  
-Response Engine  
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         USER INPUT                               │
+│                    (Student Query Text)                          │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   FRONTEND LAYER                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │   Angular Chat UI (domain-specific-chat-ui/)              │  │
+│  │   • Material Design Components                            │  │
+│  │   • Chat Component (chat.component.ts)                    │  │
+│  │   • Chat Service (chat.service.ts)                        │  │
+│  │   • HTTP Client for API Communication                     │  │
+│  │   • localStorage for Chat Persistence                     │  │
+│  └───────────────────────────────────────────────────────────┘  │
+└────────────────────────────┬────────────────────────────────────┘
+                             │ HTTP POST Request
+                             │ /chat endpoint
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   BACKEND API LAYER                              │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │   FastAPI Server (app.py)                                 │  │
+│  │   • REST API Endpoint: /chat                              │  │
+│  │   • CORS Middleware                                       │  │
+│  │   • Request/Response Handling                             │  │
+│  └───────────────────────────────────────────────────────────┘  │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                  NLP PROCESSING LAYER                            │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │   Model Pipeline (model.py)                               │  │
+│  │                                                            │  │
+│  │   1. Text Preprocessing (NLTK)                            │  │
+│  │      • Tokenization                                       │  │
+│  │      • Lowercasing                                        │  │
+│  │      • Stopword Removal                                   │  │
+│  │      • Lemmatization                                      │  │
+│  │                                                            │  │
+│  │   2. Feature Extraction                                   │  │
+│  │      • TF-IDF Vectorization                               │  │
+│  │      • N-gram Range: (1,2) - Unigrams + Bigrams           │  │
+│  │                                                            │  │
+│  │   3. Intent Classification                                │  │
+│  │      • Logistic Regression Model                          │  │
+│  │      • class_weight='balanced'                            │  │
+│  │      • Trained on intents.json                            │  │
+│  │                                                            │  │
+│  │   4. Domain Validation                                    │  │
+│  │      • Vocabulary-based Restriction                       │  │
+│  │      • VGEC-specific Intent Matching                      │  │
+│  │                                                            │  │
+│  │   5. Response Generation                                  │  │
+│  │      • Intent-to-Response Mapping                         │  │
+│  │      • Random Selection from Response Pool                │  │
+│  └───────────────────────────────────────────────────────────┘  │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    DATA LAYER                                    │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │   Training Data (intents.json)                            │  │
+│  │   • 20+ Domain-Specific Intents                           │  │
+│  │   • 200+ Training Patterns                                │  │
+│  │   • Intent-Response Mappings                              │  │
+│  └───────────────────────────────────────────────────────────┘  │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   RESPONSE DELIVERY                              │
+│  • JSON Response to Frontend                                    │
+│  • Typing Animation Effect                                      │
+│  • Auto-scroll to Latest Message                                │
+│  • Chat History Persistence                                     │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Backend:** FastAPI
-- **NLP:** NLTK
-- **Machine Learning:** Scikit-learn (Logistic Regression)
-- **Vectorization:** TF-IDF (Unigrams + Bigrams)
-- **Language:** Python
-- **Deployment Ready:** Uvicorn
+### 🔹 Backend
+- Python
+- FastAPI
+- NLTK
+- Scikit-learn
+- TF-IDF Vectorizer (ngram_range=(1,2))
+- Logistic Regression (class_weight='balanced')
+
+### 🔹 Frontend
+- Angular (Standalone Component Architecture)
+- Angular Material
+- HttpClientModule
+- CSS Animations
+- localStorage for chat persistence
 
 ---
 
@@ -58,57 +134,115 @@ Response Engine
 
 ```
 NLP_PROJECT/
-├── app.py                      # FastAPI application & routes
-├── model.py                    # NLP preprocessing & ML classifier
-├── intents.json                # Intent dataset (20+ intents)
-├── requirements.txt            # Project dependencies
-├── README.md                   # Project documentation
-├── __pycache__/                # Python cache directory
-└── documentation/              # Additional documentation
-    ├── backend.md              # Backend API documentation
-    ├── model_trained_step4.md  # Model training & step documentation
-    ├── NLP_PIPELINE.md         # NLP pipeline architecture
-    └── overview.md             # Project overview & specifications
+│
+├── app.py                          # FastAPI backend server
+├── model.py                        # NLP model training and prediction logic
+├── intents.json                    # Training data with intents and patterns
+├── requirements.txt                # Python dependencies
+├── README.md
+│
+├── __pycache__/                    # Python cache files
+│
+├── documentation/
+│   ├── backend.md
+│   ├── model_trained_step4.md
+│   ├── NLP_PIPELINE.md
+│   └── overview.md
+│
+└── domain-specific-chat-ui/        # Angular frontend application
+    ├── angular.json
+    ├── package.json
+    ├── server.ts
+    ├── tsconfig.json
+    ├── tsconfig.app.json
+    ├── tsconfig.spec.json
+    └── src/
+        ├── index.html
+        ├── main.ts
+        ├── main.server.ts
+        ├── styles.css
+        ├── app/
+        │   ├── app.component.ts
+        │   ├── app.component.html
+        │   ├── app.component.css
+        │   ├── app.config.ts
+        │   ├── app.routes.ts
+        │   ├── chat/
+        │   │   ├── chat.component.ts
+        │   │   ├── chat.component.html
+        │   │   └── chat.component.css
+        │   └── services/
+        │       ├── chat.service.ts
+        │       └── chat.service.spec.ts
+        └── assets/
 ```
-
 
 ---
 
-## 📊 Features
+## ✨ Features Implemented
 
+### 🤖 Intelligent NLP Engine
 - 20+ domain-specific intents
 - 200+ training patterns
-- Domain restriction logic (prevents unrelated responses)
-- Vocabulary-based fallback mechanism
-- REST API integration
+- Text preprocessing (tokenization, stopword removal, lemmatization)
+- TF-IDF vectorization with bigrams
+- Logistic Regression classifier
+- Vocabulary-based domain restriction
+
+---
+
+### 🌐 REST API Backend
+- `/chat` endpoint
+- CORS enabled for Angular integration
 - Swagger UI testing support
+
+---
+
+### 💬 Professional Angular Chat UI
+- Angular Material design
+- User & Bot message separation
+- Animated typing indicator
+- Smooth message fade-in animation
+- Auto-scroll to latest message
+- Disabled send button during loading
+- HTML-rendered bot responses
+- Clickable official VGEC website link
+
+---
+
+### 🎨 Advanced UI Enhancements
+- Watermark-style VGEC logo inside chatbox
+- Transparent background logo (non-intrusive)
+- Fully scrollable chat area
+- Professional toolbar branding
+- Responsive layout
+
+---
+
+### 💾 Chat Persistence
+- Chat history stored in localStorage
+- Chat remains after page refresh
+- Welcome message shown only on first load
 
 ---
 
 ## ▶️ How to Run
 
-### 1️⃣ Clone Repository
+### 🔹 Backend Setup
 
-```bash
-git clone https://github.com/karanshah254/Domain-specific-NLP-chatbot
-cd Domain-specific-NLP-chatbot
-```
-
-### 2️⃣ Install Dependencies
+1️⃣ Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Run FastAPI Server
+2️⃣ Run FastAPI server
 
 ```bash
 uvicorn app:app --reload
 ```
 
-### 4️⃣ Open API Docs (Swagger UI)
-
-Open your browser and visit:
+3️⃣ Open API Docs
 
 ```
 http://127.0.0.1:8000/docs
@@ -116,9 +250,47 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## 🧪 Example API Request
+### 🔹 Frontend Setup
 
-Send the following JSON in the `/chat` endpoint:
+1️⃣ Navigate to Angular frontend folder
+
+```bash
+cd domain-specific-chat-ui
+```
+
+2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+3️⃣ Add Angular Material (if not already added)
+
+```bash
+ng add @angular/material
+```
+
+4️⃣ Run Angular development server
+
+```bash
+ng serve
+```
+
+Or if you want to run the server-side rendering:
+
+```bash
+node server.ts
+```
+
+5️⃣ Open in browser
+
+```
+http://localhost:4200
+```
+
+---
+
+## 🧪 Example API Request (http://127.0.0.1:8000/docs)
 
 ```json
 {
@@ -130,44 +302,58 @@ Example Response:
 
 ```json
 {
-  "response": "Undergraduate tuition is around ₹6,000 total..."
+  "response": "Undergraduate tuition is around ₹6,000 total. For more information, visit: Official VGEC Website"
 }
 ```
 
 ---
 
-## 🎯 Future Enhancements
+## 🔐 Domain Restriction Logic
 
-- Replace TF-IDF with transformer-based embeddings (BERT)
-- Integrate MongoDB for dynamic knowledge retrieval
-- Develop Angular-based frontend chat interface
-- Deploy on cloud platforms (Render / AWS)
-- Add multilingual support (English, Hindi, Gujarati)
-- Implement confidence scoring visualization
-- Add user session context handling
+The chatbot:
+- Validates vocabulary match
+- Restricts responses to VGEC-related queries
+- Returns fallback message for unrelated topics
+
+Example:
+
+Input: `Virat Kohli`
+Response:
+"Sorry, I can only answer questions related to Vishwakarma Government Engineering College."
+
+---
+
+## 🎯 Academic Significance
+
+This project demonstrates:
+
+- Applied Natural Language Processing pipeline design
+- Intent classification using supervised learning
+- Backend API development
+- Full-stack system integration
+- Conversational AI architecture
+- User experience design principles
+- Real-world domain-restricted chatbot implementation
 
 ---
 
 ## 👨‍💻 Author
 
-Karan Shah  
-AI/ML & Full Stack Developer  
+Karan Shah (Final-Year-Student at VGEC, 2022-26)<br>
+AI/ML & Full Stack Developer
 
 ---
 
-## 📌 Academic Value
+## 🏫 Institution
 
-This project demonstrates:
-
-- Applied NLP pipeline design
-- Intent classification using Machine Learning
-- Domain-restricted conversational AI system
-- Backend API development with FastAPI
-- Real-world system architecture implementation
-- Practical integration of NLP theory with production-ready software
+Vishwakarma Government Engineering College
+Ahmedabad, Gujarat, India<br>
+Official Website: https://vgecg.ac.in/
 
 ---
 
+## 📌 License
 
-<!-- REPO DESCRIPTION -->
-<!-- An AI-powered domain-specific NLP chatbot for Vishwakarma Government Engineering College (VGEC), built using FastAPI, TF-IDF vectorization, and Logistic Regression for intelligent intent classification and domain-restricted conversational assistance. -->
+This project is developed for academic and demonstration purposes.
+
+---

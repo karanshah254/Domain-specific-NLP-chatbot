@@ -221,21 +221,21 @@ from sklearn.linear_model import LogisticRegression
 
 
 # -------- 1️⃣ Download NLTK Resources (Run Once) --------
-nltk.download('punkt')
-nltk.download('punkt_tab')
-nltk.download('stopwords')
-nltk.download('wordnet')
+nltk.download("punkt")
+nltk.download("punkt_tab")
+nltk.download("stopwords")
+nltk.download("wordnet")
 
 
 # -------- 2️⃣ Initialize NLP Tools --------
 lemmatizer = WordNetLemmatizer()
-stop_words = set(stopwords.words('english'))
+stop_words = set(stopwords.words("english"))
 
 
 # -------- 3️⃣ Text Preprocessing Function --------
 def preprocess(text):
     text = text.lower()
-    text = re.sub(r'[^a-zA-Z\s]', '', text)
+    text = re.sub(r"[^a-zA-Z\s]", "", text)
     tokens = text.split()
 
     cleaned_tokens = []
@@ -258,7 +258,24 @@ responses = {}
 
 for intent in data["intents"]:
     tag = intent["tag"]
-    responses[tag] = intent["responses"]
+
+    cleaned_responses = []
+
+    for resp in intent["responses"]:
+        # Remove unwanted citation patterns like :contentReference[...]
+        resp = re.sub(r":contentReference\[.*?\]", "", resp)
+
+        # Remove unwanted utm_source tracking parts inside parentheses
+        resp = re.sub(r"\(.*?utm_source=.*?\)", "", resp)
+
+        resp = resp.strip()
+
+        # Append official website link
+        resp = resp + ' For more information, visit: <a href="https://vgecg.ac.in/" target="_blank">Official VGEC Website</a>'
+
+        cleaned_responses.append(resp)
+
+    responses[tag] = cleaned_responses
 
     for pattern in intent["patterns"]:
         processed = preprocess(pattern)
@@ -267,12 +284,12 @@ for intent in data["intents"]:
 
 
 # -------- 5️⃣ Vectorization --------
-vectorizer = TfidfVectorizer(ngram_range=(1,2))
+vectorizer = TfidfVectorizer(ngram_range=(1, 2))
 X = vectorizer.fit_transform(all_sentences)
 
 
 # -------- 6️⃣ Train Model --------
-model = LogisticRegression(max_iter=1000, class_weight='balanced')
+model = LogisticRegression(max_iter=1000, class_weight="balanced")
 model.fit(X, all_labels)
 
 
